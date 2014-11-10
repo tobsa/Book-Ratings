@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "GoogleSearchResultView";
+}
+
+@using BookRatings.Models;
+
+@model BookModel
+
+@foreach (Book book in Model.GetBooks)
+{
+    <div class="row">
+        <div class="panel panel-body">
+
+            <div class="col-md-1">
+                @Html.ImageLink(book.ThumbnailSmall, Url.Action("GoogleSearchDetails", new { id = book.ID }), new { width = "75", height = "100" })
+            </div>
+
+            <div class="col-md-9">
+
+                <div class="clearfix">
+                    <div class="pull-left">
+                        @Html.ActionLink(@book.Title, "GoogleSearchDetails", new { id = book.ID }, new { @class = "h4 btn-link" })
+                    </div>
+                </div>
+
+                <div class="h5 text-muted">
+                    @Html.DisplayAuthors(book.Authors)
+                </div>
+
+                <div>
+                   @Html.Raw(Html.Truncate(book.Description, 400))
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="" data-toggle="tooltip" data-placement="left" title="@book.AverageRating">
+                    @Html.DisplayRating(book.AverageRating)
+                </div>
+            </div>
+        </div>
+
+        <div class="row"><div class="col-md-12"><hr class="panel-success no-margin" /></div></div>
+    </div>
+}
+
+
+

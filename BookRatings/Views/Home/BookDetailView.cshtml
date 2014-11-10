@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "BookDetailsView";
+}
+
+@using BookRatings.Models
+@model Book
+
+<div class="panel panel-default">
+    <p class="panel-heading"> Book details </p>
+
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-5">
+                @Model.Title
+            </div>
+            <div class="col-md-5">
+                @*@Model.Author*@
+            </div>
+            <div class="col-md-1">
+                @Model.Rating
+            </div>
+        </div>
+    </div>
+</div>
+

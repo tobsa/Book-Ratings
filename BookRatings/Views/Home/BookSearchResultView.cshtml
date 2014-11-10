@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "BookSearchResultView";
+}
+
+@using BookRatings.Models;
+
+@model BookModel
+
+<div class="panel panel-default">
+    <p class="panel-heading"> Search results </p>
+
+    <div class="panel-body">
+
+        <ul class="list-group">
+            @foreach (Book book in Model.GetBooks)
+            {
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-5">
+                        </div>
+                        <div class="col-md-5">
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+    @Html.ActionLink("Can't find your book? Try google search here...", "GoogleSearch")
+</div>

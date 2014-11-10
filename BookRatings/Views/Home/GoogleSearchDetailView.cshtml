@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "GoogleSearchDetailsView";
+}
+
+@using BookRatings.Models
+
+@model Book
+
+<div class="panel panel-default">
+    <p class="panel-heading"> @Model.Title </p>
+
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-2">
+                @Html.Image(Model.Thumbnail, new { width = 128, height = 196 })
+            </div>
+
+            <div class="col-md-8">
+                <span class="h3">@Html.DisplayFor(m => m.Title)</span>
+                <div class="h6">
+                    @Html.DisplayFor(m => m.Subtitle)
+                </div>
+
+                <div class="h5 text-muted">
+                    @Html.DisplayAuthors(Model.Authors)
+                </div>
+
+                <div>
+                    @Html.Raw(Model.Description)
+                </div>
+            </div>
+        </div>
+
+        <div class="row jumbotron danger">
+            <div class="col-md-2">
+                <ul class="list-group">
+                    <li class="list-group-item"><b>@Html.Raw("Authors: ")</b></li>
+                    <li class="list-group-item"><b>@Html.Raw("Published: ")</b></li>
+                    <li class="list-group-item"><b>@Html.Raw("Publisher: ")</b></li>
+                    <li class="list-group-item"><b>@Html.Raw("Languange: ")</b></li>
+                </ul>
+                
+            </div>
+
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item test">@Html.DisplayAuthors(Model.Authors)</li>
+                    <li class="list-group-item">@Html.DisplayFor(m => m.PublishedDate)</li>
+                    <li class="list-group-item">@Html.DisplayFor(m => m.Publisher)</li>
+                    <li class="list-group-item">@Html.Raw(Model.Language)</li>
+                </ul>
+                
+            </div>
+
+            <div class="col-md-2">
+                <div><b>@Html.Raw("Pages: ")</b></div>
+
+                @foreach (var item in Model.IndustryIdentifiers)
+                {
+                    <div><b>@Html.Raw(item.Key + ":")</b></div>
+                }
+            </div>
+
+            <div class="col-md-4">
+                <div>@Html.Raw(Model.PageCount)</div>
+
+                @foreach (var item in Model.IndustryIdentifiers)
+                {
+                    <div>@Html.Raw(item.Value)</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
